@@ -1,0 +1,68 @@
+﻿@model SampleMVCMasterDetails.Models.Employees
+
+@{
+    ViewBag.Title = "AddEmployee";
+}
+
+<h2>AddEmployee</h2>
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm())
+        {
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label for="Name">Name</label>
+                @Html.HiddenFor(x=>x.EmpId)
+                @Html.TextBoxFor(x => x.Name, new { id = "txtName", @class = "form-control", placeholder = "Name" })
+                @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="Designation">Designation</label>
+                @Html.DropDownListFor(x => x.Designation, new[] { new SelectListItem() { Text = "Manager", Value = "Manager" }, new SelectListItem() { Text = "Worker", Value = "Worker" } }, "Select", new { id = "txtDesignation", @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Designation, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ">
+                <label for="Email">Email</label>
+                @Html.TextBoxFor(x => x.Email, new { id = "txtEmail", @class = "form-control", type = "email", placeholder = "Email" })
+                @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ">
+                <label for="Phone">Phone</label>
+                @Html.TextBoxFor(x => x.Phone, new { id = "txtPhone", @class = "form-control", type = "contact", placeholder = "Phone" })
+                @Html.ValidationMessageFor(x => x.Phone, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ">
+                <label for="Address">Address</label>
+                @Html.TextAreaFor(x => x.Address, new { id = "txtAddress", @class = "form-control", placeholder = "Address" })
+                @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ">
+                <label for="UserName">UserName</label>
+                @Html.TextBoxFor(x => x.UserName, new { id = "txtUserName", @class = "form-control", placeholder = "UserName" })
+                @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ">
+                <label for="Password">Password</label>
+                @Html.PasswordFor(x => x.Password, new { id = "txtPassword", @class = "form-control", placeholder = "Password" })
+                @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ">
+                <label for="ConfirmPassword">ConfirmPassword</label>
+                @Html.PasswordFor(x => x.ConfirmPassword, new { id = "txtConfirmPassword", @class = "form-control", placeholder = "Confirm Password" })
+                @Html.ValidationMessageFor(x => x.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ">
+                <label for="Age">Age</label>
+                @Html.TextBoxFor(x => x.Age, new { id = "txtAge", @class = "form-control", placeholder = "Age" })
+                @Html.ValidationMessageFor(x => x.Age, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.HiddenFor(x=>x.ErrorCode, new { Value="" })
+                <input type="submit" value="Add" class="btn btn-success" />
+                <input type="reset" value="Reset" class="btn btn-default" />
+            </div>
+        }
+    </div>
+</div>
